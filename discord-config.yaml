@@ -18,6 +18,7 @@ tun:
   stack: system
   auto-route: true
   auto-detect-interface: true
+  strict-route: true
 
 proxy-providers:
   VPN-PROVIDER:
@@ -47,6 +48,7 @@ rule-providers:
     interval: 86400
 
 rules:
+  - PROCESS-NAME,Discord.exe,VPN
   - RULE-SET,discord-domains,VPN
   - RULE-SET,discord-ips,VPN
   - MATCH,DIRECT
