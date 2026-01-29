@@ -41,15 +41,7 @@ rule-providers:
     path: ./ruleset/discord-domains.yaml
     interval: 86400
 
-  discord-ips:
-    type: http
-    behavior: ipcidr
-    url: https://raw.githubusercontent.com/1andrevich/Re-filter-lists/main/discord_ips.lst
-    path: ./ruleset/discord-ips.yaml
-    interval: 86400
-
 rules:
   - PROCESS-NAME,Discord.exe,VPN
   - RULE-SET,discord-domains,VPN
-  - RULE-SET,discord-ips,VPN
   - MATCH,DIRECT
