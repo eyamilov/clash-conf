@@ -30,8 +30,6 @@ proxy-groups:
     type: select
     use:
       - VPN-PROVIDER
-    proxies:
-      - DIRECT
 
 rule-providers:
   discord-domains:
