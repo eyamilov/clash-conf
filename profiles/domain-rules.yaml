@@ -1,0 +1,120 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+external-controller: 127.0.0.1:9090
+
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geosite: "https://raw.githubusercontent.com/runetfreedom/russia-v2ray-rules-dat/release/geosite.dat"
+  geoip: "https://raw.githubusercontent.com/runetfreedom/russia-v2ray-rules-dat/release/geoip.dat"
+
+dns:
+  enabled: true
+  listen: 0.0.0.0:1053
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "time.*.com"
+    - "ntp.*.com"
+    - "*.ntp.org"
+  nameserver:
+    - https://dns.adguard-dns.com/dns-query
+  fallback:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: false
+    ipcidr:
+      - 0.0.0.0/8
+      - 10.0.0.0/8
+      - 100.64.0.0/10
+      - 127.0.0.0/8
+      - 169.254.0.0/16
+      - 192.168.0.0/16
+  proxy-server-nameserver:
+    - https://dns.adguard-dns.com/dns-query
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+
+tun:
+  enable: true
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+  dns-hijack:
+    - any:53
+
+proxy-providers:
+  VPN-PROVIDER:
+    type: file
+    path: ./proxies.yaml
+    interval: 0
+
+proxy-groups:
+  - name: VPN
+    type: select
+    use:
+      - VPN-PROVIDER
+
+rules:
+  - PROCESS-NAME,Discord.exe,VPN
+  - PROCESS-NAME,Telegram.exe,VPN
+  - PROCESS-NAME,WhatsApp.exe,VPN
+
+  - DOMAIN-SUFFIX,crazypanda.ru,DIRECT
+  - DOMAIN-SUFFIX,crazypanda.games,DIRECT
+  - DOMAIN-SUFFIX,unity3d.com,DIRECT
+  - DOMAIN-SUFFIX,vkuserphoto.ru,DIRECT
+  - DOMAIN-SUFFIX,userapi.com,DIRECT
+  - DOMAIN-SUFFIX,2ip.io,DIRECT
+
+  - DOMAIN-SUFFIX,2ip.ru,VPN
+  - DOMAIN-SUFFIX,4pda.to,VPN
+  - DOMAIN-SUFFIX,adguard.org,VPN
+  - DOMAIN-SUFFIX,adguard.com,VPN
+  - DOMAIN-SUFFIX,adguard.info,VPN
+  - DOMAIN-SUFFIX,adtidy.org,VPN
+  - DOMAIN-SUFFIX,nike.com,VPN
+  - DOMAIN-SUFFIX,newbalance.com,VPN
+  - DOMAIN-SUFFIX,x.ai,VPN
+  - DOMAIN-SUFFIX,ufc.com,VPN
+  - DOMAIN-SUFFIX,ufcfightpass.com,VPN
+  - DOMAIN-SUFFIX,ufcespanol.com,VPN
+  - DOMAIN-SUFFIX,ufc.tv,VPN
+  - DOMAIN-SUFFIX,savefrom.net,VPN
+  - DOMAIN-SUFFIX,sf-tools.com,VPN
+  - DOMAIN-SUFFIX,sf-converter.com,VPN
+  - DOMAIN-SUFFIX,qrcode-alligator.com,VPN
+  - DOMAIN-SUFFIX,grammarly.com,VPN
+  - DOMAIN-SUFFIX,aistudio.google.com,VPN
+  - DOMAIN-SUFFIX,alkalimining-pa.googleapis.com,VPN
+  - DOMAIN-SUFFIX,habr.com,VPN
+  - DOMAIN-SUFFIX,habrastorage.org,VPN
+
+  - GEOSITE,category-ads-all,REJECT
+  - GEOSITE,private,DIRECT
+  - GEOIP,private,DIRECT,no-resolve
+
+  - GEOSITE,telegram,VPN
+  - GEOIP,telegram,VPN,no-resolve
+  - GEOSITE,youtube,VPN
+  - GEOSITE,signal,VPN
+  - GEOSITE,instagram,VPN
+  - GEOSITE,facebook,VPN
+  - GEOSITE,whatsapp,VPN
+  - GEOSITE,meta,VPN
+  - GEOIP,facebook,VPN,no-resolve
+  - GEOSITE,discord,VPN
+  - GEOSITE,speedtest,VPN
+  - GEOSITE,roblox,VPN
+  - GEOSITE,ru-blocked,VPN
+  - GEOIP,ru-blocked,VPN,no-resolve
+
+  - MATCH,DIRECT
