@@ -5,7 +5,7 @@ log-level: info
 ipv6: false
 external-controller: 127.0.0.1:9090
 
-geodata-mode: true
+geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
@@ -21,9 +21,16 @@ dns:
   fake-ip-filter:
     - "*.lan"
     - "*.local"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
     - "time.*.com"
     - "ntp.*.com"
     - "*.ntp.org"
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
   nameserver:
     - https://dns.adguard-dns.com/dns-query
   fallback:
@@ -64,40 +71,27 @@ proxy-groups:
     use:
       - VPN-PROVIDER
 
+rule-providers:
+  direct-domains:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/eyamilov/clash-conf/main/rules/direct.yaml
+    path: ./ruleset/direct.yaml
+    interval: 86400
+  misc-domains:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/eyamilov/clash-conf/main/rules/misc.yaml
+    path: ./ruleset/misc.yaml
+    interval: 86400
+
 rules:
   - PROCESS-NAME,Discord.exe,VPN
   - PROCESS-NAME,Telegram.exe,VPN
   - PROCESS-NAME,WhatsApp.exe,VPN
 
-  - DOMAIN-SUFFIX,crazypanda.ru,DIRECT
-  - DOMAIN-SUFFIX,crazypanda.games,DIRECT
-  - DOMAIN-SUFFIX,unity3d.com,DIRECT
-  - DOMAIN-SUFFIX,vkuserphoto.ru,DIRECT
-  - DOMAIN-SUFFIX,userapi.com,DIRECT
-  - DOMAIN-SUFFIX,2ip.io,DIRECT
-
-  - DOMAIN-SUFFIX,2ip.ru,VPN
-  - DOMAIN-SUFFIX,4pda.to,VPN
-  - DOMAIN-SUFFIX,adguard.org,VPN
-  - DOMAIN-SUFFIX,adguard.com,VPN
-  - DOMAIN-SUFFIX,adguard.info,VPN
-  - DOMAIN-SUFFIX,adtidy.org,VPN
-  - DOMAIN-SUFFIX,nike.com,VPN
-  - DOMAIN-SUFFIX,newbalance.com,VPN
-  - DOMAIN-SUFFIX,x.ai,VPN
-  - DOMAIN-SUFFIX,ufc.com,VPN
-  - DOMAIN-SUFFIX,ufcfightpass.com,VPN
-  - DOMAIN-SUFFIX,ufcespanol.com,VPN
-  - DOMAIN-SUFFIX,ufc.tv,VPN
-  - DOMAIN-SUFFIX,savefrom.net,VPN
-  - DOMAIN-SUFFIX,sf-tools.com,VPN
-  - DOMAIN-SUFFIX,sf-converter.com,VPN
-  - DOMAIN-SUFFIX,qrcode-alligator.com,VPN
-  - DOMAIN-SUFFIX,grammarly.com,VPN
-  - DOMAIN-SUFFIX,aistudio.google.com,VPN
-  - DOMAIN-SUFFIX,alkalimining-pa.googleapis.com,VPN
-  - DOMAIN-SUFFIX,habr.com,VPN
-  - DOMAIN-SUFFIX,habrastorage.org,VPN
+  - RULE-SET,direct-domains,DIRECT
+  - RULE-SET,misc-domains,VPN
 
   - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT

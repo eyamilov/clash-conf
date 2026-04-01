@@ -1,0 +1,36 @@
+payload:
+  - DOMAIN,local.adguard.org
+  - DOMAIN-SUFFIX,2ip.io
+  - DOMAIN-SUFFIX,rustore.ru
+  - DOMAIN-SUFFIX,netcraze.cloud
+  - DOMAIN-SUFFIX,netcraze.ru
+  - DOMAIN-SUFFIX,keenetic.cloud
+  - DOMAIN-SUFFIX,keenetic.ru
+  - DOMAIN-SUFFIX,keenetic.com
+  - DOMAIN-SUFFIX,keenetic.io
+  - DOMAIN-SUFFIX,keenetic.net
+  - DOMAIN-SUFFIX,istranet.ru
+  - DOMAIN-SUFFIX,mail.ru
+  - DOMAIN-SUFFIX,2gis.ru
+  - DOMAIN-SUFFIX,2gis.com
+  - DOMAIN-SUFFIX,moisport.ru
+  - DOMAIN-SUFFIX,csmoisport.ru
+  - DOMAIN-SUFFIX,mosenergosbyt.ru
+  - DOMAIN-SUFFIX,mosobleirc.ru
+  - DOMAIN-SUFFIX,smartdriving.io
+
+  # Government
+  - DOMAIN-SUFFIX,mos.ru
+  - DOMAIN-SUFFIX,mosreg.ru
+  - DOMAIN-SUFFIX,nalog.ru
+  - DOMAIN-SUFFIX,112mo.ru
+  - DOMAIN-SUFFIX,gu-st.ru
+  - DOMAIN-SUFFIX,gosuslugi.ru
+  - DOMAIN-SUFFIX,gov.ru
+
+  # WPC
+  - DOMAIN-SUFFIX,crazypanda.ru
+  - DOMAIN-SUFFIX,crazypanda.games
+  - DOMAIN-SUFFIX,unity3d.com
+  - DOMAIN-SUFFIX,vkuserphoto.ru
+  - DOMAIN-SUFFIX,userapi.com
