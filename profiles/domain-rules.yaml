@@ -5,7 +5,7 @@ log-level: info
 ipv6: false
 external-controller: 127.0.0.1:9090
 
-geodata-mode: false
+geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
@@ -84,6 +84,36 @@ rule-providers:
     url: https://raw.githubusercontent.com/eyamilov/clash-conf/main/rules/misc.yaml
     path: ./ruleset/misc.yaml
     interval: 86400
+  copilot-domains:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Copilot/Copilot.yaml
+    path: ./ruleset/copilot.yaml
+    interval: 86400
+  gemini-domains:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
+    path: ./ruleset/gemini.yaml
+    interval: 86400
+  kinopub-domains:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/eyamilov/clash-conf/main/rules/kinopub.yaml
+    path: ./ruleset/kinopub.yaml
+    interval: 86400
+  hostings-domains:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/eyamilov/clash-conf/main/rules/hostings.yaml
+    path: ./ruleset/hostings.yaml
+    interval: 86400
+  torrents-domains:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/eyamilov/clash-conf/main/rules/torrents.yaml
+    path: ./ruleset/torrents.yaml
+    interval: 86400
 
 rules:
   - PROCESS-NAME,Discord.exe,VPN
@@ -92,6 +122,11 @@ rules:
 
   - RULE-SET,direct-domains,DIRECT
   - RULE-SET,misc-domains,VPN
+  - RULE-SET,copilot-domains,VPN
+  - RULE-SET,gemini-domains,VPN
+  - RULE-SET,kinopub-domains,VPN
+  - RULE-SET,hostings-domains,VPN
+  - RULE-SET,torrents-domains,VPN
 
   - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
@@ -99,16 +134,28 @@ rules:
 
   - GEOSITE,telegram,VPN
   - GEOIP,telegram,VPN,no-resolve
+  - GEOSITE,whatsapp,VPN
   - GEOSITE,youtube,VPN
-  - GEOSITE,signal,VPN
+  - GEOSITE,openai,VPN
+  - GEOSITE,anthropic,VPN
+  - GEOSITE,twitter,VPN
+  - GEOIP,twitter,VPN,no-resolve
   - GEOSITE,instagram,VPN
   - GEOSITE,facebook,VPN
-  - GEOSITE,whatsapp,VPN
   - GEOSITE,meta,VPN
   - GEOIP,facebook,VPN,no-resolve
+  - GEOSITE,linkedin,VPN
+  - GEOSITE,jetbrains,VPN
+  - GEOSITE,jetbrains-ai,VPN
   - GEOSITE,discord,VPN
   - GEOSITE,speedtest,VPN
   - GEOSITE,roblox,VPN
+  - GEOSITE,google-deepmind,VPN
+  - GEOSITE,signal,VPN
+  - GEOSITE,airbnb,VPN
+  - GEOSITE,canva,VPN
+  - GEOSITE,kinopub,VPN
+  - GEOSITE,rutracker,VPN
   - GEOSITE,ru-blocked,VPN
   - GEOIP,ru-blocked,VPN,no-resolve
 
