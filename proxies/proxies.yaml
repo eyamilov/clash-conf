@@ -1,0 +1,16 @@
+# This is a template for filling out the proxies.yaml file
+proxies:
+  - name: "some_name"
+    type: vless
+    server: some.domain.or.ip.com
+    port: 443
+    uuid: some_uuid
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: some_public_key
+      short-id: some_short_id
+    servername: www.microsoft.com
+    client-fingerprint: chrome
