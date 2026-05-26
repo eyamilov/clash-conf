@@ -33,7 +33,6 @@ dns:
     - "*.msftncsi.com"
   nameserver:
     - https://dns.adguard-dns.com/dns-query
-  fallback:
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
   fallback-filter:
