@@ -14,7 +14,7 @@ geox-url:
   mmdb: "https://git.io/GeoLite2-Country.mmdb"
 
 dns:
-  enabled: true
+  enable: true
   listen: 0.0.0.0:1053
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
@@ -35,15 +35,6 @@ dns:
     - https://dns.adguard-dns.com/dns-query
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
-  fallback-filter:
-    geoip: false
-    ipcidr:
-      - 0.0.0.0/8
-      - 10.0.0.0/8
-      - 100.64.0.0/10
-      - 127.0.0.0/8
-      - 169.254.0.0/16
-      - 192.168.0.0/16
   proxy-server-nameserver:
     - https://dns.adguard-dns.com/dns-query
     - https://cloudflare-dns.com/dns-query
